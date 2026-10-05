@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOUVIK KHAN - <h1><span>Creative Designer & Developer</span></h1></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.21/dist/vanta.net.min.js"></script>
+    <style>
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #8e2505;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* 3D Card Effect */
+        .portfolio-card {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        .portfolio-card:hover {
+            transform: rotateY(10deg) rotateX(5deg) scale(1.03);
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, #190881, #384bc6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* 3D Background */
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- 3D Background -->
+    <div id="vanta-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white bg-opacity-90 shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-gray-800">SHOUVIK</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-500">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-500">About</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-500">Skills</a>
+                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-blue-500">Portfolio</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500">Contact</a>
+                    <div class="flex items-center">
+    <img src="my logo.jpg" alt="Logo" class="h-8 mr-2">
+    <span class="text-xl font-bold text-gray-800"></span>
+</div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-95 pb-4 px-4">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-blue-500">Home</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-blue-500">About</a>
+            <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-500">Skills</a>
+            <a href="#portfolio" class="block py-2 text-gray-700 hover:text-blue-500">Portfolio</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-500">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">Hello, I'm <span class="gradient-text">SHOUVIK</span></h1>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-800 mb-6">KHAN</h2>
+                    <h3 class="text-xl md:text-2xl text-gray-600 mb-6"><h1><span> DESIGNER & SOFTWARE DEVELOPER</span><h1></h3>
+                    <p class="text-gray-600 mb-8 text-lg">"Turning coffee into code and ideas into impact."</p>
+                    <div class="absolute top-20 left-10 opacity-20 hover:opacity-100 transition-opacity">
+</div>
+                    <div class="flex space-x-4">
+                        <a href="#portfolio" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 transform hover:scale-105">View My Work</a>
+                        <a href="#contact" class="border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300 transform hover:scale-105">Contact Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-blue-100 rounded-full flex items-center justify-center floating">
+                        <!-- 3D Avatar Placeholder -->
+                        <div class="relative w-full h-full rounded-full overflow-hidden">
+                            <span class="text-6xl md:text-8xl text-blue-500 font-bold"></span>
+                            <img src="rcb.jpg" alt="profile Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white bg-opacity-90 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-48 h-48 bg-gray-200 rounded-full overflow-hidden transform transition duration-500 hover:rotate-6">
+                        <!-- 3D Profile Image -->
+                        <img src="sth.jpg" alt="profile Image">
+                            <span class="text-4xl text-blue-500 font-bold">SK</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <p class="text-gray-600 mb-6 text-lg">👋 Hi, I’m Shouvik Khan — a passionate Software Engineer and Computer Science student with strong proficiency in Python, Java, C++, and Data Structures & Algorithms.
+I love building things that make an impact — from efficient backend systems to interactive user experiences. I’m constantly learning, experimenting, and striving to improve every day.</p>
+                    <p class="text-gray-600 mb-6 text-lg">🔍 Whether it's solving algorithmic challenges or developing real-world applications, I’m always up for a challenge. Let's build something amazing together.
+
+</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-blue-50 px-4 py-2 rounded-full transform transition hover:scale-110">
+                            <span class="text-blue-600">UI/UX Design</span>
+                        </div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-full transform transition hover:scale-110">
+                            <span class="text-blue-600">Front-end Development</span>
+                        </div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-full transform transition hover:scale-110">
+                            <span class="text-blue-600">Brand Identity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 bg-opacity-90 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">My Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill Item with 3D Effect -->
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition duration-300 portfolio-card">
+                    <div class="text-blue-500 mb-4 text-4xl">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">UI/UX Design</h3>
+                    <p class="text-gray-600">Designing with empathy, building with precision — where user needs meet elegant code.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition duration-300 portfolio-card">
+                    <div class="text-blue-500 mb-4 text-4xl">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+                    <p class="text-gray-600">Building responsive and performant websites and applications.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition duration-300 portfolio-card">
+                    <div class="text-blue-500 mb-4 text-4xl">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mobile Design</h3>
+                    <p class="text-gray-600">Designing mobile-first experiences for modern users.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition duration-300 portfolio-card">
+                    <div class="text-blue-500 mb-4 text-4xl">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Brand Strategy</h3>
+                    <p class="text-gray-600">Developing cohesive brand identities and strategies.</p>
+                </div>
+            </div>
+            
+            <!-- Skill Bars -->
+            <div class="mt-16 max-w-3xl mx-auto">
+                <h3 class="text-xl font-semibold mb-6 text-center">Technical Skills</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700">HTML/CSS</span>
+                            <span class="text-gray-600">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700">JavaScript</span>
+                            <span class="text-gray-600">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700">UI/UX Design</span>
+                            <span class="text-gray-600">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700">React</span>
+                            <span class="text-gray-600">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white bg-opacity-90 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl fools-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 with 3D Effect -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 portfolio-card">
+                    <img src="https:nt-bold text-center text-gray-800 mb-12">My Work</h2>
+            <div class="grid grid-c//via.placeholder.com/600x400" alt="Project 1" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center p-4 transform group-hover:scale-110 transition duration-300">
+                            <h3 class="text-white text-xl font-bold mb-2">E-commerce Website</h3>
+                            <p class="text-gray-300 mb-4">Full redesign for fashion brand</p>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 portfolio-card">
+                    <img src="voice pic.jpg" alt="Project 2" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center p-4 transform group-hover:scale-110 transition duration-300">
+                            <h3 class="text-white text-xl font-bold mb-2">Mobile App UI</h3>
+                            <p class="text-gray-300 mb-4">Fitness tracking application</p>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 portfolio-card">
+                    <img src="Chatbot-Theory.webp" alt="Project 3" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center p-4 transform group-hover:scale-110 transition duration-300">
+                            <h3 class="text-white text-xl font-bold mb-2">Brand Identity</h3>
+                            <p class="text-gray-300 mb-4">Logo and visual system for startup</p>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 transform hover:scale-105">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 bg-opacity-90 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Get In Touch</h2>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                    <p class="text-gray-600 mb-6">Feel free to reach out for collaborations or just to say hello!</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="text-blue-500 mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600">khanshouvik1@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-blue-500 mr-4 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Phone</h4>
+                                <p class="text-gray-600">9339013296</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-blue-500 mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Location</h4>
+                                <p class="text-gray-600">Kolkata, West Bengal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-medium text-gray-800 mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.facebook.com/shouvik.khan.583" class="text-gray-600 hover:text-blue-500 text-xl transform hover:scale-125 transition duration-300">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/_shouvikk_/" class="text-gray-600 hover:text-blue-500 text-xl transform hover:scale-125 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/shouvik-khan-89042b293/" class="text-gray-600 hover:text-blue-500 text-xl transform hover:scale-125 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/shouvikk-suv" class="text-gray-600 hover:text-blue-500 text-xl transform hover:scale-125 transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold">SHOUVIK KHAN</span>
+                    <p class="text-gray-400 mt-1"><h1>Creative Designer & Developer<h1></p>
+        <span class="text-xl font-bold">SHOUVIK KHAN</span>
+        <p class="text-gray-400 mt-1">Creative Designer & Developer</p>
+        <div class="mb-4 md:mb-0 flex items-center">
+    <img src="your-logo.png" alt="Logo" class="h-8 mr-3">
+    <div>
+        <span class="text-xl font-bold">SHOUVIK KHAN</span>
+        <p class="text-gray-400 mt-1">Creative Designer & Developer</p>
+    </div>
+</div>
+    </div>
+</div>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>© 2023 SHOUVIK KHAN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Vanta.js 3D background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0xf5f7fa,
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Change navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.add('bg-opacity-100');
+                nav.classList.remove('bg-opacity-90');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('bg-opacity-90');
+                nav.classList.remove('bg-opacity-100');
+            }
+        });
+
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.portfolio-card, .floating');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.portfolio-card, .floating').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load
+        animateOnScroll();
+    </script>
+</body>
+</html>
